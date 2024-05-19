@@ -4,7 +4,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import connect from '@/db.js';
 import Photo from "@/models/Photo.js";
 
-export const config = { api: { bodyParser: true } };
 
 export async function POST(req: NextRequest) {
   
