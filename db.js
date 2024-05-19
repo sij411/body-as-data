@@ -9,6 +9,7 @@ const connect = async () => {
             
         
         });
+        console.log("Mongo connection successfull")
 ;    } catch (error) {
     throw new Error("Error in connection to mongodb");
     }
