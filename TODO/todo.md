@@ -8,6 +8,4 @@
 ## In Progress
 - [ ] Main page "/" [main.html]
 
-
-
 ## Done
