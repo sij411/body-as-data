@@ -18,8 +18,7 @@ export default function Webcam() {
     }
   }, []);
 
-  const clickEvent = () => {
-    // TODO: Add click event that take a photo from video stream
+  const savePhotoData = async () => {
     if (videoRef.current && canvasRef.current) {
       const video = videoRef.current;
       const canvas = canvasRef.current;
@@ -29,13 +28,28 @@ export default function Webcam() {
       canvas.height = video.videoHeight;
       context?.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
       const dataUrl = canvas.toDataURL('image/png');
-    }
+      const partialDataUrl = dataUrl.substring(0, 100);
+
     // TODO: Add click event that send photo to server
+      const response = await fetch('/api', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ partialDataUrl })
+        });
+
+        if (!response.ok) {
+        console.error('Failed to save partialDataUrl');
+    }
   };
+    }
+
+    
 
   return <>
      
-    <video ref={videoRef} autoPlay onClick={clickEvent} style={{ pointerEvents: 'auto', width: '100vw', height: '100vh', objectFit: 'cover'}}/>
+    <video ref={videoRef} autoPlay onClick={savePhotoData} style={{ pointerEvents: 'auto', width: '100vw', height: '100vh', objectFit: 'cover'}}/>
     <canvas ref={canvasRef} style={{ display: 'none' }} />
 </>
 }
@@ -80,10 +94,9 @@ class webCamComponent {
         body: JSON.stringify({photo: base64Image})
       })
       .then(response => response.json())
-      .then(data => {
-            console.log(data);
-            window.location.href = "/photo-view";
-          }
+      .then(
+          // TODO: redirect to the '/photo-view' page
+          
       ).catch(error => console.error('Error:', error));
   
     }
