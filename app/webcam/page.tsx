@@ -30,7 +30,10 @@ export default function Webcam() {
       canvas.height = video.videoHeight;
       context?.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
       const dataUrl = canvas.toDataURL('image/png');
-      const partialDataUrl = dataUrl.substring(0, 100);
+      let base64Image = dataUrl.replace(/^data:image\/[^;]+;base64,/, "");
+
+      const partialDataUrl = base64Image.substring(0, 100);
+
 
       const response = await fetch('/api', {
             method: 'POST',
@@ -40,7 +43,8 @@ export default function Webcam() {
             body: JSON.stringify({ partialDataUrl })
         })
         .then(data => {
-          router.push('/photo')
+          console.log('Success:', data);
+          //router.push('/photo')
         }
         )
         .catch(err => console.error(err, 'Failed to save partialDataUrl'))

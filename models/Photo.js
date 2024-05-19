@@ -9,4 +9,4 @@ const photoSchema = new Schema({
     },
     });
 
-export default mongoose.models.Post || mongoose.model('Photo', photoSchema);
+export default mongoose.models.Photo || mongoose.model('Photo', photoSchema);
