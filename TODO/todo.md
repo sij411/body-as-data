@@ -6,6 +6,6 @@
 - [ ] Archive page "archive"
 
 ## In Progress
-- [ ] Main page "/" [main.html]
 
 ## Done
+- [x] Main page "/" 
