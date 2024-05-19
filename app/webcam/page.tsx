@@ -44,7 +44,7 @@ export default function Webcam() {
         })
         .then(data => {
           console.log('Success:', data);
-          //router.push('/photo')
+          router.push('/photo');
         }
         )
         .catch(err => console.error(err, 'Failed to save partialDataUrl'))

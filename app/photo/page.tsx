@@ -20,23 +20,28 @@ export default function Photo() {
 
     useEffect(() => {
         getData();
+        const timer = setTimeout(() => {
+            window.location.href = '/webcam'; // replace with your URL
+        }, 5000);
+    
+        return () => clearTimeout(timer); // cleanup on unmount
     });
 
     return (
         <div className='bg-[#FF80FB] w-screen h-screen flex flex-col items-center justify-center overflow-y-auto'>
-          <p className="text-[#0CBA00] text-[200px] w-full text-center whitespace-pre-wrap overflow-wrap break-word tracking-wide transform rotate-45">  
+          <p className="text-[#0CBA00] text-[200px] w-full text-center whitespace-pre-wrap overflow-wrap break-word tracking-wide">  
               {photoData}
           </p>
-          <p className="text-[#0CBA00] text-[200px] w-full text-center whitespace-pre-wrap overflow-wrap break-word tracking-widest transform -rotate-45">  
+          <p className="text-[#0CBA00] text-[200px] w-full text-center whitespace-pre-wrap overflow-wrap break-word tracking-widest">  
               {photoData}
           </p>
-          <p className="text-[#0CBA00] text-[200px] w-full text-center whitespace-pre-wrap overflow-wrap break-word tracking-wider transform skew-x-12">  
+          <p className="text-[#0CBA00] text-[200px] w-full text-center whitespace-pre-wrap overflow-wrap break-word tracking-wider ">  
               {photoData}
           </p>
-          <p className="text-[#0CBA00] text-[200px] w-full text-center whitespace-pre-wrap overflow-wrap break-word tracking-wide transform scale-150">  
+          <p className="text-[#0CBA00] text-[200px] w-full text-center whitespace-pre-wrap overflow-wrap break-word tracking-wide ">  
               {photoData}
           </p>
-          <p className="text-[#0CBA00] text-[200px] w-full text-center whitespace-pre-wrap overflow-wrap break-word tracking-widest transform scale-50">  
+          <p className="text-[#0CBA00] text-[200px] w-full text-center whitespace-pre-wrap overflow-wrap break-word tracking-widest">  
               {photoData}
           </p>
         </div>
