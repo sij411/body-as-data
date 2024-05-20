@@ -1,5 +1,6 @@
 'use client'
 import React, { useRef, useEffect, useState } from 'react';
+import styles from './Webcam.module.css';
 
 export default function Webcam() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -43,7 +44,7 @@ export default function Webcam() {
         .then(data => {
           console.log('Success:', data);
           setShowPopup(true);
-          setPopupContent(partialDataUrl);
+          setPopupContent((partialDataUrl as string).repeat(30));
 
           setTimeout(() => {
             setShowPopup(false);
@@ -59,8 +60,8 @@ export default function Webcam() {
       <canvas ref={canvasRef} style={{ display: 'none' }} />
 
       {showPopup && (
-        <div className="fixed top-0 left-0 w-full h-full bg-white z-50 flex items-center justify-center">
-          <div className='text-black'>{popupContent}</div>
+        <div className="fixed top-0 left-0 w-full h-full bg-[#FF80FB] overflow-hidden">
+          <div className={styles.photoDataContainer}>{popupContent}</div>
           <button onClick={() => setShowPopup(false)}>Close</button>
         </div>
       )}
