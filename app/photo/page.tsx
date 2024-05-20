@@ -34,6 +34,7 @@ export default function Photo() {
             <div id="photo-data-container" className={styles.photoDataContainer}>  
                 {photoData !== null ? (photoData as string).repeat(30) : 'EMPTY'}
             </div>
+            {/* TODO : add something cool as a fallback value */}
         </div>
     );
 }
