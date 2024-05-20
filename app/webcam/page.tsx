@@ -60,7 +60,7 @@ export default function Webcam() {
       <canvas ref={canvasRef} style={{ display: 'none' }} />
 
       {showPopup && (
-        <div className="fixed top-0 left-0 w-full h-full bg-[#FF80FB] overflow-hidden">
+        <div className="fixed top-0 left-0 w-screen h-screen bg-[#FF80FB] overflow-hidden">
           <div className={styles.photoDataContainer}>{popupContent}</div>
           <button onClick={() => setShowPopup(false)}>Close</button>
         </div>
