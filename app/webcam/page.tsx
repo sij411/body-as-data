@@ -1,12 +1,11 @@
 'use client'
-
-import React, { useRef, useEffect } from 'react';
-import {useRouter} from 'next/navigation';
+import React, { useRef, useEffect, useState } from 'react';
 
 export default function Webcam() {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const router = useRouter();
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupContent, setPopupContent] = useState('');
 
   useEffect(() => {
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -34,7 +33,6 @@ export default function Webcam() {
 
       const partialDataUrl = base64Image.substring(0, 100);
 
-
       const response = await fetch('/api', {
             method: 'POST',
             headers: {
@@ -44,18 +42,28 @@ export default function Webcam() {
         })
         .then(data => {
           console.log('Success:', data);
-          router.push('/photo');
-        }
-        )
-        .catch(err => console.error(err, 'Failed to save partialDataUrl'))
-        ;       
-  };
+          setShowPopup(true);
+          setPopupContent(partialDataUrl);
+
+          setTimeout(() => {
+            setShowPopup(false);
+          }, 5000);
+        })
+        .catch(err => console.error(err, 'Failed to save partialDataUrl'));
     }
+  };
 
-  return <>
-     
-    <video ref={videoRef} autoPlay onClick={savePhotoData} style={{ pointerEvents: 'auto', width: '100vw', height: '100vh', objectFit: 'cover'}}/>
-    <canvas ref={canvasRef} style={{ display: 'none' }} />
-</>
+  return (
+    <>
+      <video ref={videoRef} autoPlay onClick={savePhotoData} style={{ pointerEvents: 'auto', width: '100vw', height: '100vh', objectFit: 'cover'}}/>
+      <canvas ref={canvasRef} style={{ display: 'none' }} />
+
+      {showPopup && (
+        <div className="fixed top-0 left-0 w-full h-full bg-white z-50 flex items-center justify-center">
+          <div className='text-black'>{popupContent}</div>
+          <button onClick={() => setShowPopup(false)}>Close</button>
+        </div>
+      )}
+    </>
+  );
 }
-
