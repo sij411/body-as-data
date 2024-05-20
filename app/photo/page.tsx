@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react';
+import styles from './Photo.module.css';
 
 export default function Photo() {
     const [photoData, setPhotoData] = useState(null);
@@ -20,30 +21,19 @@ export default function Photo() {
 
     useEffect(() => {
         getData();
-        const timer = setTimeout(() => {
+        /*const timer = setTimeout(() => {
             window.location.href = '/webcam'; // replace with your URL
         }, 5000);
     
         return () => clearTimeout(timer); // cleanup on unmount
+        */
     });
 
     return (
-        <div className='bg-[#FF80FB] w-screen h-screen flex flex-col items-center justify-center overflow-y-auto'>
-          <p className="text-[#0CBA00] text-[200px] w-full text-center whitespace-pre-wrap overflow-wrap break-word tracking-wide">  
-              {photoData}
-          </p>
-          <p className="text-[#0CBA00] text-[200px] w-full text-center whitespace-pre-wrap overflow-wrap break-word tracking-widest">  
-              {photoData}
-          </p>
-          <p className="text-[#0CBA00] text-[200px] w-full text-center whitespace-pre-wrap overflow-wrap break-word tracking-wider ">  
-              {photoData}
-          </p>
-          <p className="text-[#0CBA00] text-[200px] w-full text-center whitespace-pre-wrap overflow-wrap break-word tracking-wide ">  
-              {photoData}
-          </p>
-          <p className="text-[#0CBA00] text-[200px] w-full text-center whitespace-pre-wrap overflow-wrap break-word tracking-widest">  
-              {photoData}
-          </p>
+        <div className='bg-[#FF80FB] w-screen h-screen  overflow-hidden'>
+            <div id="photo-data-container" className={styles.photoDataContainer}>  
+                {photoData !== null ? (photoData as string).repeat(30) : 'EMPTY'}
+            </div>
         </div>
-      );
+    );
 }

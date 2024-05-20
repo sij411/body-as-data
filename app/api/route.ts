@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
     const newPhoto = new Photo({
       base64Data: partialDataUrl
     });
-
+    console.log(process.env.MONGODB_URI as string);
     const client = new MongoClient(process.env.MONGODB_URI as string);
     
     try {
