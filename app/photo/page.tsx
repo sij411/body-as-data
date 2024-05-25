@@ -21,12 +21,13 @@ export default function Photo() {
 
     useEffect(() => {
         getData();
+        /*
         const timer = setTimeout(() => {
             window.location.href = '/webcam'; // replace with your URL
         }, 5000);
     
         return () => clearTimeout(timer); // cleanup on unmount
-        
+        */
     });
 
     return (
