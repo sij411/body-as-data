@@ -2,9 +2,9 @@
     text-align: center;
     white-space: pre-wrap;
     word-break: break-all;
-    line-height: 0.5;
+    line-height: 1.0;
     color: #FFFF;
-    font-size: 20vw;
+    font-size: 7vw;
     object-fit: cover;
 }
 
