@@ -32,7 +32,7 @@ export default function Photo() {
     });
 
     return (
-        <div className='bg-[#FF80FB] w-screen h-screen  overflow-hidden'>
+        <div className='bg-[#000AFF] w-screen h-screen  overflow-hidden'>
             <div id="photo-data-container" className={styles.photoDataContainer}>  
                 {photoData !== null ? (photoData as string).repeat(30) : ''}
             </div>
