@@ -9,13 +9,10 @@ You can check the art work in these posts: [Post 1](https://www.instagram.com/p/
 It's a website that displays raw Base64 data in parts. You can take a photo using the webcam and check how the photo is shaped. This demonstrates how the computer perceives you—as sequences of mixed strings and integers. Body as data. 
 
 # Yapping about projects
-
-I will post some details on my blog soon.
-
+언젠가 블로그로 써야하는 것들 ㅋㅋ
 What would be included:
 - What I struggled
 - What I considered
-- My attitudes towards clients and etc
 - Why Chrominum couldn't detect my webcam?
 
 # Teck stacks
